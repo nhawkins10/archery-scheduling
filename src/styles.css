@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+body, ul, table, tr, td {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  background: #bfbfbf;
+  font-size: 18px;
+}
+
+.controlBlock {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  background: #ffffff;
+}
+
+button {
+  background: #919149;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  min-width: 80px;
+}
+
+.secondaryButton {
+  color: #000000;
+  background: #eeeeee;
+}
+
+@media(max-width: 500px) {
+  button {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+}
+
+button:hover {
+  box-shadow: 1px 1px 5px #aaa;
+}

@@ -1,0 +1,27 @@
+<div class="authentication">
+  <div class="overlay"></div>
+  <div class="authenticationContent">
+    <h2>{{ changing ? "Update Password" : "Sign In" }}</h2>
+
+    <div class="inputContainer">
+      <label *ngIf="!changing">Password</label>
+      <label *ngIf="changing">Current Password</label>
+      <input type="password" autocomplete="current-password" placeholder="Password" autofocus [(ngModel)]="password"/>
+    </div>
+    <div class="inputContainer">
+      <label *ngIf="changing">New Password</label>
+      <input id="newPassword" *ngIf="changing" type="password" autocomplete="new-password" placeholder="New Password" [(ngModel)]="newPassword"/>
+    </div>
+
+    <div class="passwordErrorMessage" *ngIf="passwordErrorMessage">Password is incorrect.</div>
+    <div class="passwordChangedMessage" *ngIf="passwordChangedMessage">Password has been updated.</div>
+
+    <div class="controlBlock">
+      <button class="secondaryButton" (click)="toggleChange()">{{ changing ? "Back" : "Update Password" }}</button>
+      <button (click)="cancel()">Cancel</button>
+      <button *ngIf="changing" (click)="changePw()">Update</button>
+      <button *ngIf="!changing" (click)="logIn()">Sign In</button>
+    </div>
+  </div>
+</div>
+
