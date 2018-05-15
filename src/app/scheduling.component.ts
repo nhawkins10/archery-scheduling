@@ -8,7 +8,7 @@ import { SchedulingService } from './service/scheduling.service';
   providers: [SchedulingService]
 })
 export class Scheduling implements OnInit{
-  title = 'Worship Team Schedule';
+  title = 'Archery Range Schedule';
 
   year = new Date().getFullYear();
   month = new Date().getMonth();
