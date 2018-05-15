@@ -7,9 +7,9 @@ export const environment = {
   production: false,
   firebase: {
     apiKey: 'AIzaSyCHVsWgPi_6arItPfwneWCGKjQmqum6KIs',
-    authDomain: 'paradise-worship-schedule.firebaseapp.com',
-    databaseURL: 'https://paradise-worship-schedule.firebaseio.com',
-    storageBucket: 'paradise-worship-schedule.appspot.com'
+    authDomain: 'paradise-archery-schedule.firebaseapp.com',
+    databaseURL: 'https://paradise-archery-schedule.firebaseio.com',
+    storageBucket: 'paradise-archery-schedule.appspot.com'
   }
 };
 
