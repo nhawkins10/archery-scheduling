@@ -15,7 +15,7 @@ export class Scheduling implements OnInit{
   day = new Date().getDate();
 
   roster = [];
-  unavailable = [];
+  volunteers = [];
 
   showEdit = false;
   showAuth = false;
@@ -29,7 +29,7 @@ export class Scheduling implements OnInit{
 
   /*
    * Updates the current day and retrieves
-   * the list of unavailable people for the
+   * the list of volunteers for the
    * given date.
    *
    * @param day - day to set
@@ -37,12 +37,12 @@ export class Scheduling implements OnInit{
    */
   onDayChanged(day: number) {
     this.day = day;
-    this.getUnavailable();
+    this.getMonthData();
   }
 
   /*
    * Updates the current month and retrieves
-   * the list of unavailable people for the
+   * the list of volunteers for the
    * given date.
    *
    * @param month - month to set
@@ -50,12 +50,12 @@ export class Scheduling implements OnInit{
    */
   onMonthChanged(month: number) {
     this.month = month;
-    this.getUnavailable();
+    this.getMonthData();
   }
 
   /*
    * Updates the current year and retrieves
-   * the list of unavailable people for the
+   * the list of volunteers for the
    * given date.
    *
    * @param year - year to set
@@ -63,7 +63,7 @@ export class Scheduling implements OnInit{
    */
   onYearChanged(year: number) {
     this.year = year;
-    this.getUnavailable();
+    this.getMonthData();
   }
 
 
@@ -77,11 +77,11 @@ export class Scheduling implements OnInit{
    *
    * @return none
    */
-  getRoster() {
-    this.schedulingService.getRoster().then(function(roster) {
-      this.roster = roster;
-    }.bind(this));
-  }
+//  getRoster() {
+//    this.schedulingService.getRoster().then(function(roster) {
+//      this.roster = roster;
+//    }.bind(this));
+//  }
 
   /*
    * Saves the list of current members
@@ -92,7 +92,7 @@ export class Scheduling implements OnInit{
    */
   onRosterChanged(roster: string) {
     this.schedulingService.saveRoster(JSON.parse(roster)).then(function() {
-      this.getRoster();
+//      this.getRoster();
     }.bind(this));
   }
 
@@ -115,16 +115,16 @@ export class Scheduling implements OnInit{
   }
 
   /*
-   * Retrieves the list of unavailable members
+   * Retrieves the list of volunteers
    * for a given date and stores the list in a
    * local variable.
    *
    * @return none
    */
-  getUnavailable() {
+  getMonthData() {
     var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-    this.schedulingService.getUnavailable(dataKey, this.day).then(function(unavailable) {
-      this.unavailable = unavailable;
+    this.schedulingService.getMonthData(dataKey, this.day).then(function(volunteers) {
+      this.volunteers = volunteers;
     }.bind(this));
   }
 
@@ -135,10 +135,10 @@ export class Scheduling implements OnInit{
    * @param availabile - boolean indicating the availability of the given member
    * @return none
    */
-  saveUnavailable(id: string, available: boolean) {
+  saveVolunteer(id: string, available: boolean) {
     let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-    this.schedulingService.saveUnavailable(dataKey, this.day, id, available).then(function() {
-      this.getUnavailable();
+    this.schedulingService.saveVolunteer(dataKey, this.day, id, available).then(function() {
+      this.getMonthData();
     }.bind(this));
   }
 
@@ -148,16 +148,16 @@ export class Scheduling implements OnInit{
    * @param person - the JSON object representing the member's current availability
    * @return none
    */
-  onAvailabilityChanged(person: string) {
-    if (!this.locked) {
-      var personData = JSON.parse(person);
-      var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-
-      this.saveUnavailable(personData.id, !personData.available);
-    } else {
-      alert("Scheduling is currently locked.");
-    }
-  }
+//  onAvailabilityChanged(person: string) {
+//    if (!this.locked) {
+//      var personData = JSON.parse(person);
+//      var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+//
+//      this.saveVolunteer(personData.id, !personData.available);
+//    } else {
+//      alert("Scheduling is currently locked.");
+//    }
+//  }
 
 
   //---------------------------------------//
@@ -224,8 +224,8 @@ export class Scheduling implements OnInit{
    * @return none
    */
   ngOnInit(): void {
-    this.getRoster();
-    this.getUnavailable();
+//    this.getRoster();
+    this.getMonthData();
     this.getLocked();
   }
 

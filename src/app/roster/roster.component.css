@@ -7,6 +7,10 @@
   cursor: default;
 }
 
+.smallIcon {
+  width: 30px;
+}
+
 .roster {
   display: inline-block;
   right: 0;
@@ -81,7 +85,6 @@ li {
   list-style-type: none;
   width: calc(100% - 50px);
   border-bottom: 1px solid #ececec;
-  cursor: pointer;
 }
 
 @media (min-width: 901px) {
@@ -102,5 +105,21 @@ li:first-child {
 
 li:not(.locked):hover {
   background-color: #f1f1f1;
+}
+
+.roster table {
+  width: 100%;
+}
+
+li:not(.locked):hover .checkmark.reduced {
+  opacity: .5;
+}
+
+.checkmark {
+  cursor: pointer;
+}
+
+.checkmark.reduced {
+  opacity: 0;
 }
 

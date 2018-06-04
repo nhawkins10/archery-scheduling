@@ -4,7 +4,7 @@ import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase }
 @Injectable()
 export class SchedulingService {
   roster = []
-  unavailable = [];
+  volunteers = [];
   path = "";
 
   constructor(private db: AngularFireDatabase) {}
@@ -33,28 +33,28 @@ export class SchedulingService {
     }.bind(this));
   }
 
-  getUnavailable(dataKey, dayKey) {
+  getMonthData(dataKey, dayKey) {
     return new Promise(function(resolve, reject) {
       this.db.object('/months')
         .subscribe(snapshots => {
           if (snapshots[dataKey] && snapshots[dataKey][dayKey]) {
-            this.unavailable = snapshots[dataKey][dayKey];
+            this.volunteers = snapshots[dataKey][dayKey];
             resolve(snapshots[dataKey][dayKey]);
           } else {
-            this.unavailable = [];
+            this.volunteers = [];
             resolve([]);
           }
         });
     }.bind(this));
   }
 
-  saveUnavailable(dataKey: string, day: number, id: string, available: boolean) {
+  saveVolunteer(dataKey: string, day: number, id: string, available: boolean) {
     var newList = [];
     var updates = {};
 
-    for (var count=0; count<this.unavailable.length; count++) {
-      if (this.unavailable[count] != id) {
-        newList.push(this.unavailable[count]);
+    for (var count=0; count<this.volunteers.length; count++) {
+      if (this.volunteers[count] != id) {
+        newList.push(this.volunteers[count]);
       }
     }
 

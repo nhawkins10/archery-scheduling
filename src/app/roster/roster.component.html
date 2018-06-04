@@ -4,8 +4,28 @@
     <img class="lockIcon" src="./assets/lock.png" *ngIf="locked" title="Scheduling is currently locked." />
   </header>
   <ul>
-    <ng-container *ngFor="let person of availabilityList">
-      <li *ngIf="showAll || person.available" [class.unavailable]="!person.available" [class.locked]="locked" (click)="toggleAvailable(person)" title="Click to update availability.">{{ person.name }}</li>
+    <ng-container *ngFor="let person of volunteers">
+      <li [ngClass]="{'locked' : locked}">
+        <table>
+          <tr>
+            <td width="10%">
+              <span title="Click to deselect for work" *ngIf="person.selected == 'true'"><img class="smallIcon checkmark" src="./assets/check.png" /></span>
+              <span title="Click to select for work" *ngIf="person.selected == 'false'"><img class="smallIcon checkmark reduced" src="./assets/check.png" /></span>
+            </td>
+            <td width="40%"><span>{{ person.name }}</span></td>
+            <td width="30%">
+              <span *ngIf="person.when == 'BEFORE'">Before Service</span>
+              <span *ngIf="person.when == 'AFTER'">After Service</span>
+              <span *ngIf="person.when == 'BOTH'">Before & After</span>
+            </td>
+            <td width="10%">
+              <span *ngIf="person.role == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
+              <span *ngIf="person.role == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
+            </td>
+            <td width="10%"><span title="Delete"><img class="smallIcon" src="./assets/trash.png" /></span></td>
+          </tr>
+        </table>
+      </li>
     </ng-container>
   </ul>
   <div class="controlBlock">
