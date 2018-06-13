@@ -1,17 +1,28 @@
 <div class="rosterEdit">
   <div class="overlay"></div>
   <div class="rosterEditContent">
-    <h2>Edit Team Members</h2>
-    <ul id="editList">
-      <li *ngFor="let person of workingRoster; let i = index">
-        <input [(ngModel)]="workingRoster[i].name" />
-        <span title="Delete" (click)="delete(person)">X</span>
-      </li>
-    </ul>
+    <h2>Sign Up</h2>
+
+    <div class="formSection">
+      <div class="title">Name</div>
+      <input type="text" [(ngModel)]="name" />
+    </div>
+
+    <div class="formSection">
+      <div class="title">Time</div>
+      <input type="radio" name="time" id="time-before" checked [(ngModel)]="when" value="BEFORE" /><label for="time-before">Before</label>
+      <input type="radio" name="time" id="time-after" [(ngModel)]="when" value="AFTER"/><label for="time-after">After</label>
+      <input type="radio" name="time" id="time-both" [(ngModel)]="when" value="BOTH"/><label for="time-both">Before & After</label>
+    </div>
+
+    <div class="formSection">
+      <div class="title">Position</div>
+      <input type="radio" name="role" id="role-range" checked [(ngModel)]="role" value="RANGE" /><label for="role-range">Range Captain</label>
+      <input type="radio" name="role" id="role-desk" [(ngModel)]="role" value="DESK" /><label for="role-desk">Check In Desk</label>
+    </div>
 
     <div class="controlBlock">
-      <button (click)="create()">Add Person</button>
-      <button (click)="cancel()">Cancel</button>
+      <button (click)="cancel()" class="secondaryButton">Cancel</button>
       <button (click)="save()">Save</button>
     </div>
   </div>

@@ -6,44 +6,28 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
   styleUrls: ['./roster-edit.component.css']
 })
 export class RosterEdit {
-  @Input() roster;
-  @Output() onRosterChanged = new EventEmitter<String>();
-  @Output() onHideRoster = new EventEmitter<String>();
-  workingRoster = [];
+  @Output() onAddVolunteer = new EventEmitter<String>();
+  @Output() onHideEdit = new EventEmitter<String>();
+  name = '';
+  when = 'BEFORE';
+  role = 'RANGE';
 
   save() {
-    this.onRosterChanged.emit(JSON.stringify(this.workingRoster));
-    this.onHideRoster.emit();
+    var person = {
+      'name': this.name,
+      'when': this.when,
+      'role': this.role,
+      'selected': false
+    }
+    this.onAddVolunteer.emit(JSON.stringify(person));
+    this.onHideEdit.emit();
   }
 
   cancel() {
-    this.onHideRoster.emit();
-  }
-
-  delete(person) {
-    var index = -1;
-    for (var count=0; count<this.workingRoster.length; count++) {
-       if (this.workingRoster[count].id === person.id) {
-         index = count;
-       }
-    }
-
-    if (index > -1) {
-      this.workingRoster.splice(index, 1);
-    }
-  }
-
-  create() {
-    this.workingRoster.push({"id": Date.now(), "name": ""});
-    setTimeout(function() {
-      document.getElementById('editList').scrollTo(0, 100000);
-    });
+    this.onHideEdit.emit();
   }
 
   ngOnInit(): void {
-    this.workingRoster = [];
-    for (var count = 0; count<this.roster.length; count++) {
-      this.workingRoster.push({"name": this.roster[count].name, "id": this.roster[count].id});
-    }
+
   }
 }

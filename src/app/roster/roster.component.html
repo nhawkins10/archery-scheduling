@@ -32,8 +32,8 @@
     </ng-container>
   </ul>
   <div class="controlBlock">
+    <button (click)="openAuth()" *ngIf="locked" class="secondaryButton">Log In</button>
+    <button (click)="logOut()" *ngIf="!locked" class="secondaryButton">Log Out</button>
     <button (click)="edit()">Sign Up</button>
-    <button (click)="openAuth()" *ngIf="locked">Log In</button>
-    <button (click)="logOut()" *ngIf="!locked">Log Out</button>
   </div>
 </div>

@@ -84,16 +84,17 @@ export class Scheduling implements OnInit{
 //  }
 
   /*
-   * Saves the list of current members
-   * to the database when it is changed.
+   * Adds a new volunteer to the list for the current day
    *
-   * @param roster - the JSON object containing memeber data
+   * @param person - the new person object
    * @return none
    */
-  onRosterChanged(roster: string) {
-    this.schedulingService.saveRoster(JSON.parse(roster)).then(function() {
-//      this.getRoster();
-    }.bind(this));
+  onAddVolunteer(person: string) {
+   let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+   var personData = JSON.parse(person);
+   this.schedulingService.saveVolunteer(dataKey, this.day, personData).then(function() {
+     this.getMonthData();
+   }.bind(this));
   }
 
   /*
@@ -101,7 +102,7 @@ export class Scheduling implements OnInit{
    *
    * @return none
    */
-  onHideRoster() {
+  onHideEdit() {
     this.showEdit = false;
   }
 
