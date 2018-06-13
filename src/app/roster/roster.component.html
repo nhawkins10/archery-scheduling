@@ -4,6 +4,9 @@
     <img class="lockIcon" src="./assets/lock.png" *ngIf="locked" title="Scheduling is currently locked." />
   </header>
   <ul>
+    <div *ngIf="volunteers.length == 0" class="opacity centerText">
+      Nobody's signed up yet.
+    </div>
     <ng-container *ngFor="let person of volunteers">
       <li [ngClass]="{'locked' : locked}">
         <table>

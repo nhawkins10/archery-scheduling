@@ -11,6 +11,14 @@
   width: 30px;
 }
 
+.opacity {
+  opacity: .5;
+}
+
+.centerText {
+  text-align: center;
+}
+
 .roster {
   display: inline-block;
   right: 0;
