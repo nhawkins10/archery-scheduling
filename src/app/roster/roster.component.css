@@ -111,15 +111,15 @@ li:not(.locked):hover {
   width: 100%;
 }
 
-li:not(.locked):hover .checkmark.reduced {
+li:not(.locked):hover .smallIcon.reduced {
   opacity: .5;
 }
 
-.checkmark {
+.pointer {
   cursor: pointer;
 }
 
-.checkmark.reduced {
+.smallIcon.reduced {
   opacity: 0;
 }
 

@@ -39,7 +39,7 @@ export class SchedulingService {
         .subscribe(snapshots => {
           if (snapshots[dataKey] && snapshots[dataKey][dayKey]) {
             this.volunteers = snapshots[dataKey][dayKey];
-            resolve(snapshots[dataKey][dayKey]);
+            resolve(snapshots[dataKey][dayKey].sort(function(a, b) { return a.name > b.name; }));
           } else {
             this.volunteers = [];
             resolve([]);
@@ -48,19 +48,37 @@ export class SchedulingService {
     }.bind(this));
   }
 
-  saveVolunteer(dataKey: string, day: number, id: string, available: boolean) {
+  saveVolunteer(dataKey: string, day: number, person) {
     var newList = [];
     var updates = {};
 
     for (var count=0; count<this.volunteers.length; count++) {
-      if (this.volunteers[count] != id) {
+      if (this.volunteers[count].name != person.name) {
         newList.push(this.volunteers[count]);
       }
     }
 
-    if (!available) {
-      newList.push(id);
+    newList.push(person);
+
+    updates[dataKey + '/' + day] = newList;
+
+    return new Promise(function(resolve, reject) {
+      this.db.object('/months')
+        .update(updates);
+        resolve("success");
+    }.bind(this));
+  }
+
+  deleteVolunteer(dataKey: string, day: number, person) {
+    var newList = [];
+    var updates = {};
+
+    for (var count=0; count<this.volunteers.length; count++) {
+      if (this.volunteers[count].name != person.name) {
+        newList.push(this.volunteers[count]);
+      }
     }
+
     updates[dataKey + '/' + day] = newList;
 
     return new Promise(function(resolve, reject) {

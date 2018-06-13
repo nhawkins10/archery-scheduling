@@ -135,29 +135,46 @@ export class Scheduling implements OnInit{
    * @param availabile - boolean indicating the availability of the given member
    * @return none
    */
-  saveVolunteer(id: string, available: boolean) {
+  saveVolunteer(person) {
     let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-    this.schedulingService.saveVolunteer(dataKey, this.day, id, available).then(function() {
+    this.schedulingService.saveVolunteer(dataKey, this.day, person).then(function() {
       this.getMonthData();
     }.bind(this));
   }
 
   /*
-   * Toggles the availability for a given member.
+   * Toggles whether a person is working.
    *
-   * @param person - the JSON object representing the member's current availability
+   * @param person - the JSON object representing the member
    * @return none
    */
-//  onAvailabilityChanged(person: string) {
-//    if (!this.locked) {
-//      var personData = JSON.parse(person);
-//      var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-//
-//      this.saveVolunteer(personData.id, !personData.available);
-//    } else {
-//      alert("Scheduling is currently locked.");
-//    }
-//  }
+  onWorkingChanged(person: string) {
+    if (!this.locked) {
+      var personData = JSON.parse(person);
+      personData.selected = !personData.selected;
+      this.saveVolunteer(personData);
+    } else {
+      alert("Scheduling is currently locked.");
+    }
+  }
+
+  /*
+   * Deletes a person from the current day.
+   *
+   * @param person - the JSON object representing the member
+   * @return none
+   */
+  onDelete(person: string) {
+    var personData = JSON.parse(person);
+    if (!personData.selected) {
+      let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+      this.schedulingService.deleteVolunteer(dataKey, this.day, personData).then(function() {
+        this.getMonthData();
+      }.bind(this));
+    } else {
+      alert("This person is currently scheduled to work and cannot be deleted.");
+    }
+  }
 
 
   //---------------------------------------//
@@ -224,7 +241,6 @@ export class Scheduling implements OnInit{
    * @return none
    */
   ngOnInit(): void {
-//    this.getRoster();
     this.getMonthData();
     this.getLocked();
   }

@@ -9,8 +9,8 @@
         <table>
           <tr>
             <td width="10%">
-              <span title="Click to deselect for work" *ngIf="person.selected == 'true'"><img class="smallIcon checkmark" src="./assets/check.png" /></span>
-              <span title="Click to select for work" *ngIf="person.selected == 'false'"><img class="smallIcon checkmark reduced" src="./assets/check.png" /></span>
+              <span title="Click to deselect for work" *ngIf="person.selected == true"><img class="smallIcon pointer" src="./assets/check.png" (click)="toggleWorking(person)"/></span>
+              <span title="Click to select for work" *ngIf="person.selected == false"><img class="smallIcon pointer reduced" src="./assets/check.png" (click)="toggleWorking(person)" /></span>
             </td>
             <td width="40%"><span>{{ person.name }}</span></td>
             <td width="30%">
@@ -22,7 +22,7 @@
               <span *ngIf="person.role == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
               <span *ngIf="person.role == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
             </td>
-            <td width="10%"><span title="Delete"><img class="smallIcon" src="./assets/trash.png" /></span></td>
+            <td width="10%"><span title="Delete"><img class="smallIcon pointer" src="./assets/trash.png" (click)="delete(person)"/></span></td>
           </tr>
         </table>
       </li>
