@@ -10,6 +10,10 @@ body {
   font-size: 18px;
 }
 
+.smallIcon {
+  width: 30px;
+}
+
 .controlBlock {
   width: 100%;
   text-align: center;

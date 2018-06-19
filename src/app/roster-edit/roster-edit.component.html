@@ -3,7 +3,7 @@
   <div class="rosterEditContent">
     <h2>Sign Up</h2>
 
-    <div class="formSection">
+    <div class="formSection name">
       <div class="title">Name</div>
       <input type="text" [(ngModel)]="name" />
     </div>
@@ -15,10 +15,27 @@
       <input type="radio" name="time" id="time-both" [(ngModel)]="when" value="BOTH"/><label for="time-both">Before & After</label>
     </div>
 
-    <div class="formSection">
+    <div class="formSection position">
       <div class="title">Position</div>
-      <input type="radio" name="role" id="role-range" checked [(ngModel)]="role" value="RANGE" /><label for="role-range">Range Captain</label>
-      <input type="radio" name="role" id="role-desk" [(ngModel)]="role" value="DESK" /><label for="role-desk">Check In Desk</label>
+      <input type="radio" name="role" id="role-range" checked [(ngModel)]="role" value="RANGE" />
+      <label for="role-range">
+        <table>
+          <tr>
+            <td style="width:40%"><img class="smallIcon" src="{{ role === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}" /></td>
+            <td>Range Captain</td>
+          </tr>
+        </table>
+      </label>
+
+      <input type="radio" name="role" id="role-desk" [(ngModel)]="role" value="DESK" />
+      <label for="role-desk">
+        <table>
+          <tr>
+            <td style="width:40%"><img class="smallIcon" src="{{ role === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}" /></td>
+            <td>Check In Desk</td>
+          </tr>
+        </table>
+      </label>
     </div>
 
     <div class="controlBlock">
@@ -27,4 +44,3 @@
     </div>
   </div>
 </div>
-
