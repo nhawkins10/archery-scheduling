@@ -480,7 +480,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".rosterEdit {\r\n  background: #ffffff;\r\n}\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: rgba(0, 0, 0, 0.6);\r\n  z-index: 500;\r\n}\r\n\r\n.rosterEditContent {\r\n  z-index: 600;\r\n  position: fixed;\r\n  background: #ffffff;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .rosterEditContent {\r\n    top: 10%;\r\n    left: 20%;\r\n    width: 60%;\r\n    height: 80%;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .rosterEditContent {\r\n    top: 5%;\r\n    left: 15px;\r\n    width: calc(100% - 30px);\r\n    height: 90%;\r\n    overflow-y: auto;\r\n  }\r\n}\r\n\r\n.rosterEdit .rosterEditContent h2 {\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\nul {\r\n  overflow: auto;\r\n  max-height: calc(100% - 150px);\r\n}\r\n\r\nli {\r\n  list-style-type: none;\r\n  width: calc(100% - 50px);\r\n  border-bottom: 1px solid #ececec;\r\n  text-align: center;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  li {\r\n    padding: 20px;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  li {\r\n    padding: 20px 20px;\r\n  }\r\n}\r\n\r\nli:first-child {\r\n  border-top: 1px solid #ececec;\r\n}\r\n\r\nli:hover {\r\n  background-color: #f1f1f1;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  li input {\r\n    padding: 10px;\r\n    min-width: 30%;\r\n    font-size: 16px;\r\n    margin-right: 25px;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  li input {\r\n    padding: 10px;\r\n    font-size: 14px;\r\n    margin-right: 8px;\r\n  }\r\n}\r\n\r\nli span {\r\n  cursor: pointer;\r\n}\r\n\r\n.controlBlock {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n", ""]);
+exports.push([module.i, ".rosterEdit {\r\n  background: #ffffff;\r\n}\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: rgba(0, 0, 0, 0.6);\r\n  z-index: 500;\r\n}\r\n\r\n.rosterEditContent {\r\n  z-index: 600;\r\n  position: fixed;\r\n  background: #ffffff;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .rosterEditContent {\r\n    top: 20%;\r\n    left: 20%;\r\n    width: 60%;\r\n    height: 60%;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .rosterEditContent {\r\n    top: 5%;\r\n    left: 15px;\r\n    width: calc(100% - 30px);\r\n    height: 90%;\r\n    overflow-y: auto;\r\n  }\r\n}\r\n\r\n.rosterEdit .rosterEditContent h2 {\r\n  width: 100%;\r\n  text-align: center;\r\n}\r\n\r\n.formSection {\r\n  padding: 20px;\r\n}\r\n\r\n.formSection .title {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.formSection.name input {\r\n  width: calc(100% - 20px);\r\n  padding: 10px;\r\n  font-size: 16px;\r\n  border-radius: 5px;\r\n  border: 1px solid #aaa;\r\n}\r\n\r\ninput[type=\"radio\"] {\r\n  display: none;\r\n}\r\n\r\ninput[type=\"radio\"] +label {\r\n  padding: 20px;\r\n  border: 1px solid #aaa;\r\n  display: inline-block;\r\n  width: calc(33% - 45px);\r\n  text-align: center;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n}\r\n\r\ninput[type=\"radio\"] +label:hover {\r\n  background: #d2d2b4;\r\n}\r\n\r\ninput[type=\"radio\"]:checked +label {\r\n  background: #919149;\r\n  color: white;\r\n  font-weight: bold;\r\n  letter-spacing: 1px;\r\n  border-color: #000;\r\n}\r\n\r\n.formSection.position input[type=\"radio\"] +label {\r\n  width: calc(50% - 45px);\r\n}\r\n\r\n.controlBlock {\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n", ""]);
 
 // exports
 
@@ -493,7 +493,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/roster-edit/roster-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"rosterEdit\">\r\n  <div class=\"overlay\"></div>\r\n  <div class=\"rosterEditContent\">\r\n    <h2>Edit Team Members</h2>\r\n    <ul id=\"editList\">\r\n      <li *ngFor=\"let person of workingRoster; let i = index\">\r\n        <input [(ngModel)]=\"workingRoster[i].name\" />\r\n        <span title=\"Delete\" (click)=\"delete(person)\">X</span>\r\n      </li>\r\n    </ul>\r\n\r\n    <div class=\"controlBlock\">\r\n      <button (click)=\"create()\">Add Person</button>\r\n      <button (click)=\"cancel()\">Cancel</button>\r\n      <button (click)=\"save()\">Save</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"rosterEdit\">\r\n  <div class=\"overlay\"></div>\r\n  <div class=\"rosterEditContent\">\r\n    <h2>Sign Up</h2>\r\n\r\n    <div class=\"formSection name\">\r\n      <div class=\"title\">Name</div>\r\n      <input type=\"text\" [(ngModel)]=\"name\" />\r\n    </div>\r\n\r\n    <div class=\"formSection\">\r\n      <div class=\"title\">Time</div>\r\n      <input type=\"radio\" name=\"time\" id=\"time-before\" checked [(ngModel)]=\"when\" value=\"BEFORE\" /><label for=\"time-before\">Before</label>\r\n      <input type=\"radio\" name=\"time\" id=\"time-after\" [(ngModel)]=\"when\" value=\"AFTER\"/><label for=\"time-after\">After</label>\r\n      <input type=\"radio\" name=\"time\" id=\"time-both\" [(ngModel)]=\"when\" value=\"BOTH\"/><label for=\"time-both\">Before & After</label>\r\n    </div>\r\n\r\n    <div class=\"formSection position\">\r\n      <div class=\"title\">Position</div>\r\n      <input type=\"radio\" name=\"role\" id=\"role-range\" checked [(ngModel)]=\"role\" value=\"RANGE\" />\r\n      <label for=\"role-range\">\r\n        <table>\r\n          <tr>\r\n            <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}\" /></td>\r\n            <td>Range Captain</td>\r\n          </tr>\r\n        </table>\r\n      </label>\r\n\r\n      <input type=\"radio\" name=\"role\" id=\"role-desk\" [(ngModel)]=\"role\" value=\"DESK\" />\r\n      <label for=\"role-desk\">\r\n        <table>\r\n          <tr>\r\n            <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}\" /></td>\r\n            <td>Check In Desk</td>\r\n          </tr>\r\n        </table>\r\n      </label>\r\n    </div>\r\n\r\n    <div class=\"controlBlock\">\r\n      <button (click)=\"cancel()\" class=\"secondaryButton\">Cancel</button>\r\n      <button (click)=\"save()\">Save</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -515,54 +515,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var RosterEdit = (function () {
     function RosterEdit() {
-        this.onRosterChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.onHideRoster = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.workingRoster = [];
+        this.onAddVolunteer = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onHideEdit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.name = '';
+        this.when = 'BEFORE';
+        this.role = 'RANGE';
     }
     RosterEdit.prototype.save = function () {
-        this.onRosterChanged.emit(JSON.stringify(this.workingRoster));
-        this.onHideRoster.emit();
+        var person = {
+            'name': this.name,
+            'when': this.when,
+            'role': this.role,
+            'selected': false
+        };
+        this.onAddVolunteer.emit(JSON.stringify(person));
+        this.onHideEdit.emit();
     };
     RosterEdit.prototype.cancel = function () {
-        this.onHideRoster.emit();
-    };
-    RosterEdit.prototype.delete = function (person) {
-        var index = -1;
-        for (var count = 0; count < this.workingRoster.length; count++) {
-            if (this.workingRoster[count].id === person.id) {
-                index = count;
-            }
-        }
-        if (index > -1) {
-            this.workingRoster.splice(index, 1);
-        }
-    };
-    RosterEdit.prototype.create = function () {
-        this.workingRoster.push({ "id": Date.now(), "name": "" });
-        setTimeout(function () {
-            document.getElementById('editList').scrollTo(0, 100000);
-        });
+        this.onHideEdit.emit();
     };
     RosterEdit.prototype.ngOnInit = function () {
-        this.workingRoster = [];
-        for (var count = 0; count < this.roster.length; count++) {
-            this.workingRoster.push({ "name": this.roster[count].name, "id": this.roster[count].id });
-        }
     };
     return RosterEdit;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
-], RosterEdit.prototype, "roster", void 0);
+], RosterEdit.prototype, "onAddVolunteer", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
-], RosterEdit.prototype, "onRosterChanged", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
-    __metadata("design:type", Object)
-], RosterEdit.prototype, "onHideRoster", void 0);
+], RosterEdit.prototype, "onHideEdit", void 0);
 RosterEdit = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'roster-edit',
@@ -583,7 +566,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".unavailable {\r\n  text-decoration: line-through;\r\n  color: #aaaaaa;\r\n}\r\n\r\n.locked {\r\n  cursor: default;\r\n}\r\n\r\n.roster {\r\n  display: inline-block;\r\n  right: 0;\r\n  position: absolute;\r\n  background: #ffffff;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n .roster {\r\n   width: 100%;\r\n }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .roster {\r\n    width: 49%;\r\n    box-shadow: -5px 5px 5px #aaa;\r\n    height: calc(100% - 175px);\r\n  }\r\n}\r\n\r\n\r\n.roster header {\r\n  width: 100%;\r\n  text-align: center\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .roster header {\r\n    margin: 12px 0;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .roster h2 {\r\n    display: none;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .roster h2 {\r\n    display: inline-block;\r\n  }\r\n}\r\n\r\n.lockIcon {\r\n  width: 25px;\r\n  position: relative;\r\n  top: 3px;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .lockIcon {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .lockIcon {\r\n    left: 10px;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  ul {\r\n    height: calc(100% - 150px);\r\n    overflow-y: auto;\r\n  }\r\n}\r\n\r\nli {\r\n  list-style-type: none;\r\n  width: calc(100% - 50px);\r\n  border-bottom: 1px solid #ececec;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  li {\r\n    padding: 25px;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  li {\r\n    padding: 20px 25px;\r\n  }\r\n}\r\n\r\nli:first-child {\r\n  border-top: 1px solid #ececec;\r\n}\r\n\r\nli:not(.locked):hover {\r\n  background-color: #f1f1f1;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".unavailable {\r\n  text-decoration: line-through;\r\n  color: #aaaaaa;\r\n}\r\n\r\n.locked {\r\n  cursor: default;\r\n}\r\n\r\n.opacity {\r\n  opacity: .5;\r\n}\r\n\r\n.centerText {\r\n  text-align: center;\r\n}\r\n\r\n.roster {\r\n  display: inline-block;\r\n  right: 0;\r\n  position: absolute;\r\n  background: #ffffff;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n .roster {\r\n   width: 100%;\r\n }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .roster {\r\n    width: 49%;\r\n    box-shadow: -5px 5px 5px #aaa;\r\n    height: calc(100% - 175px);\r\n  }\r\n}\r\n\r\n\r\n.roster header {\r\n  width: 100%;\r\n  text-align: center\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .roster header {\r\n    margin: 12px 0;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .roster h2 {\r\n    display: none;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .roster h2 {\r\n    display: inline-block;\r\n  }\r\n}\r\n\r\n.lockIcon {\r\n  width: 25px;\r\n  position: relative;\r\n  top: 3px;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .lockIcon {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .lockIcon {\r\n    left: 10px;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  ul {\r\n    height: calc(100% - 150px);\r\n    overflow-y: auto;\r\n  }\r\n}\r\n\r\nli {\r\n  list-style-type: none;\r\n  width: calc(100% - 50px);\r\n  border-bottom: 1px solid #ececec;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  li {\r\n    padding: 25px;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  li {\r\n    padding: 20px 25px;\r\n  }\r\n}\r\n\r\nli:first-child {\r\n  border-top: 1px solid #ececec;\r\n}\r\n\r\nli:not(.locked):hover {\r\n  background-color: #f1f1f1;\r\n}\r\n\r\n.roster table {\r\n  width: 100%;\r\n}\r\n\r\nli:not(.locked):hover .smallIcon.reduced {\r\n  opacity: .5;\r\n}\r\n\r\n.pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.smallIcon.reduced {\r\n  opacity: 0;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -596,7 +579,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/roster/roster.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"roster\">\r\n  <header>\r\n    <h2>Team Members</h2>\r\n    <img class=\"lockIcon\" src=\"./assets/lock.png\" *ngIf=\"locked\" title=\"Scheduling is currently locked.\" />\r\n  </header>\r\n  <ul>\r\n    <ng-container *ngFor=\"let person of availabilityList\">\r\n      <li *ngIf=\"showAll || person.available\" [class.unavailable]=\"!person.available\" [class.locked]=\"locked\" (click)=\"toggleAvailable(person)\" title=\"Click to update availability.\">{{ person.name }}</li>\r\n    </ng-container>\r\n  </ul>\r\n  <div class=\"controlBlock\">\r\n    <button (click)=\"edit()\">Edit</button>\r\n    <button (click)=\"toggleShowAll()\">{{ showAll ? \"Show Available\" : \"Show All\" }}</button>\r\n    <button (click)=\"openAuth()\">{{ locked ? \"Unlock\" : \"Lock\" }}</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"roster\">\r\n  <header>\r\n    <h2>Volunteers</h2>\r\n    <img class=\"lockIcon\" src=\"./assets/lock.png\" *ngIf=\"locked\" title=\"Scheduling is currently locked.\" />\r\n  </header>\r\n  <ul>\r\n    <div *ngIf=\"volunteers.length == 0\" class=\"opacity centerText\">\r\n      Nobody's signed up yet.\r\n    </div>\r\n    <ng-container *ngFor=\"let person of volunteers\">\r\n      <li [ngClass]=\"{'locked' : locked}\">\r\n        <table>\r\n          <tr>\r\n            <td width=\"10%\">\r\n              <span title=\"Click to deselect for work\" *ngIf=\"person.selected == true\"><img class=\"smallIcon pointer\" src=\"./assets/check.png\" (click)=\"toggleWorking(person)\"/></span>\r\n              <span title=\"Click to select for work\" *ngIf=\"person.selected == false\"><img class=\"smallIcon pointer reduced\" src=\"./assets/check.png\" (click)=\"toggleWorking(person)\" /></span>\r\n            </td>\r\n            <td width=\"40%\"><span>{{ person.name }}</span></td>\r\n            <td width=\"30%\">\r\n              <span *ngIf=\"person.when == 'BEFORE'\">Before Service</span>\r\n              <span *ngIf=\"person.when == 'AFTER'\">After Service</span>\r\n              <span *ngIf=\"person.when == 'BOTH'\">Before & After</span>\r\n            </td>\r\n            <td width=\"10%\">\r\n              <span *ngIf=\"person.role == 'RANGE'\" title=\"Range Captain\"><img class=\"smallIcon\" src=\"./assets/target.png\" /></span>\r\n              <span *ngIf=\"person.role == 'DESK'\" title=\"Check In Deck\"><img class=\"smallIcon\" src=\"./assets/pen.png\" /></span>\r\n            </td>\r\n            <td width=\"10%\"><span title=\"Delete\"><img class=\"smallIcon pointer\" src=\"./assets/trash.png\" (click)=\"delete(person)\"/></span></td>\r\n          </tr>\r\n        </table>\r\n      </li>\r\n    </ng-container>\r\n  </ul>\r\n  <div class=\"controlBlock\">\r\n    <button (click)=\"openAuth()\" *ngIf=\"locked\" class=\"secondaryButton\">Log In</button>\r\n    <button (click)=\"logOut()\" *ngIf=\"!locked\" class=\"secondaryButton\">Log Out</button>\r\n    <button (click)=\"edit()\">Sign Up</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -618,58 +601,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Roster = (function () {
     function Roster() {
-        this.onAvailabilityChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onWorkingChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onDelete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.onEdit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.onOpenAuth = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onToggleLock = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.availabilityList = [];
-        this.showAll = true;
     }
-    Roster.prototype.setAvailability = function () {
-        this.availabilityList = [];
-        if (this.roster && this.unavailable) {
-            for (var count = 0; count < this.roster.length; count++) {
-                var available = true;
-                for (var unAvlCount = 0; unAvlCount < this.unavailable.length; unAvlCount++) {
-                    if (this.unavailable[unAvlCount] == this.roster[count].id) {
-                        available = false;
-                    }
-                }
-                this.availabilityList.push({
-                    "name": this.roster[count].name,
-                    "id": this.roster[count].id,
-                    "available": available
-                });
-            }
-        }
+    Roster.prototype.toggleWorking = function (person) {
+        this.onWorkingChanged.emit(JSON.stringify(person));
     };
-    Roster.prototype.toggleAvailable = function (person) {
-        this.onAvailabilityChanged.emit(JSON.stringify(person));
+    Roster.prototype.delete = function (person) {
+        this.onDelete.emit(JSON.stringify(person));
     };
     Roster.prototype.edit = function () {
         this.onEdit.emit();
     };
-    Roster.prototype.toggleShowAll = function () {
-        this.showAll = !this.showAll;
-    };
     Roster.prototype.openAuth = function () {
         this.onOpenAuth.emit(this.locked);
     };
+    Roster.prototype.logOut = function () {
+        this.onToggleLock.emit(this.locked);
+    };
     Roster.prototype.ngOnInit = function () {
-        this.setAvailability();
+        //    this.setAvailability();
     };
     Roster.prototype.ngOnChanges = function () {
-        this.setAvailability();
+        //     this.setAvailability();
     };
     return Roster;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
     __metadata("design:type", Object)
-], Roster.prototype, "roster", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Object)
-], Roster.prototype, "unavailable", void 0);
+], Roster.prototype, "volunteers", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
     __metadata("design:type", Object)
@@ -677,7 +642,11 @@ __decorate([
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
-], Roster.prototype, "onAvailabilityChanged", void 0);
+], Roster.prototype, "onWorkingChanged", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", Object)
+], Roster.prototype, "onDelete", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
@@ -686,6 +655,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
 ], Roster.prototype, "onOpenAuth", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", Object)
+], Roster.prototype, "onToggleLock", void 0);
 Roster = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'roster',
@@ -719,7 +692,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/scheduling.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <img class=\"logoImg\" src=\"./assets/logo-img.png\" />\r\n  <img class=\"logoText\" src=\"./assets/logo-text.png\" />\r\n  <!--<div class=\"headerText\">{{ title }}</div>-->\r\n</div>\r\n<calendar [year]=\"year\" [month]=\"month\" [day]=\"day\" (onDayChanged)=\"onDayChanged($event)\" (onMonthChanged)=\"onMonthChanged($event)\" (onYearChanged)=\"onYearChanged($event)\" ></calendar>\r\n<roster [roster]=\"roster\" [unavailable]=\"unavailable\" [locked]=\"locked\" (onAvailabilityChanged)=\"onAvailabilityChanged($event)\" (onEdit)=\"onEdit($event)\" (onOpenAuth)=\"openAuth($event)\"></roster>\r\n<roster-edit *ngIf=\"showEdit\" [roster]=\"roster\" (onRosterChanged)=\"onRosterChanged($event)\" (onHideRoster)=\"onHideRoster($event)\"></roster-edit>\r\n<authentication *ngIf=\"showAuth\" [locked]=\"locked\" (onHideAuth)=\"onHideAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onPasswordChanged)=\"onPasswordChanged($event)\"></authentication>\r\n\r\n"
+module.exports = "<div class=\"header\">\r\n  <img class=\"logoImg\" src=\"./assets/logo-img.png\" />\r\n  <img class=\"logoText\" src=\"./assets/logo-text.png\" />\r\n  <!--<div class=\"headerText\">{{ title }}</div>-->\r\n</div>\r\n<calendar [year]=\"year\" [month]=\"month\" [day]=\"day\" (onDayChanged)=\"onDayChanged($event)\" (onMonthChanged)=\"onMonthChanged($event)\" (onYearChanged)=\"onYearChanged($event)\" ></calendar>\r\n<roster [volunteers]=\"volunteers\" [locked]=\"locked\" (onWorkingChanged)=\"onWorkingChanged($event)\" (onEdit)=\"onEdit($event)\" (onOpenAuth)=\"openAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onDelete)=\"onDelete($event)\"></roster>\r\n<roster-edit *ngIf=\"showEdit\" (onAddVolunteer)=\"onAddVolunteer($event)\" (onHideEdit)=\"onHideEdit($event)\"></roster-edit>\r\n<authentication *ngIf=\"showAuth\" [locked]=\"locked\" (onHideAuth)=\"onHideAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onPasswordChanged)=\"onPasswordChanged($event)\"></authentication>\r\n\r\n"
 
 /***/ }),
 
@@ -744,12 +717,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Scheduling = (function () {
     function Scheduling(schedulingService) {
         this.schedulingService = schedulingService;
-        this.title = 'Worship Team Schedule';
+        this.title = 'Archery Range Schedule';
         this.year = new Date().getFullYear();
         this.month = new Date().getMonth();
         this.day = new Date().getDate();
         this.roster = [];
-        this.unavailable = [];
+        this.volunteers = [];
         this.showEdit = false;
         this.showAuth = false;
         this.locked = false;
@@ -759,7 +732,7 @@ var Scheduling = (function () {
     //---------------------------------------//
     /*
      * Updates the current day and retrieves
-     * the list of unavailable people for the
+     * the list of volunteers for the
      * given date.
      *
      * @param day - day to set
@@ -767,11 +740,11 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onDayChanged = function (day) {
         this.day = day;
-        this.getUnavailable();
+        this.getMonthData();
     };
     /*
      * Updates the current month and retrieves
-     * the list of unavailable people for the
+     * the list of volunteers for the
      * given date.
      *
      * @param month - month to set
@@ -779,11 +752,11 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onMonthChanged = function (month) {
         this.month = month;
-        this.getUnavailable();
+        this.getMonthData();
     };
     /*
      * Updates the current year and retrieves
-     * the list of unavailable people for the
+     * the list of volunteers for the
      * given date.
      *
      * @param year - year to set
@@ -791,7 +764,7 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onYearChanged = function (year) {
         this.year = year;
-        this.getUnavailable();
+        this.getMonthData();
     };
     //---------------------------------------//
     //            Roster Functions           //
@@ -802,21 +775,22 @@ var Scheduling = (function () {
      *
      * @return none
      */
-    Scheduling.prototype.getRoster = function () {
-        this.schedulingService.getRoster().then(function (roster) {
-            this.roster = roster;
-        }.bind(this));
-    };
+    //  getRoster() {
+    //    this.schedulingService.getRoster().then(function(roster) {
+    //      this.roster = roster;
+    //    }.bind(this));
+    //  }
     /*
-     * Saves the list of current members
-     * to the database when it is changed.
+     * Adds a new volunteer to the list for the current day
      *
-     * @param roster - the JSON object containing memeber data
+     * @param person - the new person object
      * @return none
      */
-    Scheduling.prototype.onRosterChanged = function (roster) {
-        this.schedulingService.saveRoster(JSON.parse(roster)).then(function () {
-            this.getRoster();
+    Scheduling.prototype.onAddVolunteer = function (person) {
+        var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+        var personData = JSON.parse(person);
+        this.schedulingService.saveVolunteer(dataKey, this.day, personData).then(function () {
+            this.getMonthData();
         }.bind(this));
     };
     /*
@@ -824,7 +798,7 @@ var Scheduling = (function () {
      *
      * @return none
      */
-    Scheduling.prototype.onHideRoster = function () {
+    Scheduling.prototype.onHideEdit = function () {
         this.showEdit = false;
     };
     /*
@@ -836,16 +810,16 @@ var Scheduling = (function () {
         this.showEdit = true;
     };
     /*
-     * Retrieves the list of unavailable members
+     * Retrieves the list of volunteers
      * for a given date and stores the list in a
      * local variable.
      *
      * @return none
      */
-    Scheduling.prototype.getUnavailable = function () {
+    Scheduling.prototype.getMonthData = function () {
         var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-        this.schedulingService.getUnavailable(dataKey, this.day).then(function (unavailable) {
-            this.unavailable = unavailable;
+        this.schedulingService.getMonthData(dataKey, this.day).then(function (volunteers) {
+            this.volunteers = volunteers;
         }.bind(this));
     };
     /*
@@ -855,26 +829,44 @@ var Scheduling = (function () {
      * @param availabile - boolean indicating the availability of the given member
      * @return none
      */
-    Scheduling.prototype.saveUnavailable = function (id, available) {
+    Scheduling.prototype.saveVolunteer = function (person) {
         var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-        this.schedulingService.saveUnavailable(dataKey, this.day, id, available).then(function () {
-            this.getUnavailable();
+        this.schedulingService.saveVolunteer(dataKey, this.day, person).then(function () {
+            this.getMonthData();
         }.bind(this));
     };
     /*
-     * Toggles the availability for a given member.
+     * Toggles whether a person is working.
      *
-     * @param person - the JSON object representing the member's current availability
+     * @param person - the JSON object representing the member
      * @return none
      */
-    Scheduling.prototype.onAvailabilityChanged = function (person) {
+    Scheduling.prototype.onWorkingChanged = function (person) {
         if (!this.locked) {
             var personData = JSON.parse(person);
-            var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-            this.saveUnavailable(personData.id, !personData.available);
+            personData.selected = !personData.selected;
+            this.saveVolunteer(personData);
         }
         else {
             alert("Scheduling is currently locked.");
+        }
+    };
+    /*
+     * Deletes a person from the current day.
+     *
+     * @param person - the JSON object representing the member
+     * @return none
+     */
+    Scheduling.prototype.onDelete = function (person) {
+        var personData = JSON.parse(person);
+        if (!personData.selected) {
+            var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+            this.schedulingService.deleteVolunteer(dataKey, this.day, personData).then(function () {
+                this.getMonthData();
+            }.bind(this));
+        }
+        else {
+            alert("This person is currently scheduled to work and cannot be deleted.");
         }
     };
     //---------------------------------------//
@@ -935,8 +927,7 @@ var Scheduling = (function () {
      * @return none
      */
     Scheduling.prototype.ngOnInit = function () {
-        this.getRoster();
-        this.getUnavailable();
+        this.getMonthData();
         this.getLocked();
     };
     Scheduling.prototype.ngOnChanges = function () {
@@ -980,7 +971,7 @@ var SchedulingService = (function () {
     function SchedulingService(db) {
         this.db = db;
         this.roster = [];
-        this.unavailable = [];
+        this.volunteers = [];
         this.path = "";
     }
     SchedulingService.prototype.getRoster = function () {
@@ -1005,32 +996,45 @@ var SchedulingService = (function () {
             resolve("success");
         }.bind(this));
     };
-    SchedulingService.prototype.getUnavailable = function (dataKey, dayKey) {
+    SchedulingService.prototype.getMonthData = function (dataKey, dayKey) {
         return new Promise(function (resolve, reject) {
             var _this = this;
             this.db.object('/months')
                 .subscribe(function (snapshots) {
                 if (snapshots[dataKey] && snapshots[dataKey][dayKey]) {
-                    _this.unavailable = snapshots[dataKey][dayKey];
-                    resolve(snapshots[dataKey][dayKey]);
+                    _this.volunteers = snapshots[dataKey][dayKey];
+                    resolve(snapshots[dataKey][dayKey].sort(function (a, b) { return a.name > b.name; }));
                 }
                 else {
-                    _this.unavailable = [];
+                    _this.volunteers = [];
                     resolve([]);
                 }
             });
         }.bind(this));
     };
-    SchedulingService.prototype.saveUnavailable = function (dataKey, day, id, available) {
+    SchedulingService.prototype.saveVolunteer = function (dataKey, day, person) {
         var newList = [];
         var updates = {};
-        for (var count = 0; count < this.unavailable.length; count++) {
-            if (this.unavailable[count] != id) {
-                newList.push(this.unavailable[count]);
+        for (var count = 0; count < this.volunteers.length; count++) {
+            if (this.volunteers[count].name != person.name) {
+                newList.push(this.volunteers[count]);
             }
         }
-        if (!available) {
-            newList.push(id);
+        newList.push(person);
+        updates[dataKey + '/' + day] = newList;
+        return new Promise(function (resolve, reject) {
+            this.db.object('/months')
+                .update(updates);
+            resolve("success");
+        }.bind(this));
+    };
+    SchedulingService.prototype.deleteVolunteer = function (dataKey, day, person) {
+        var newList = [];
+        var updates = {};
+        for (var count = 0; count < this.volunteers.length; count++) {
+            if (this.volunteers[count].name != person.name) {
+                newList.push(this.volunteers[count]);
+            }
         }
         updates[dataKey + '/' + day] = newList;
         return new Promise(function (resolve, reject) {
