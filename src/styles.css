@@ -10,8 +10,16 @@ body {
   font-size: 18px;
 }
 
-.smallIcon {
-  width: 30px;
+@media (min-width: 901px) {
+  .smallIcon {
+    width: 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  .smallIcon {
+    width: 20px;
+  }
 }
 
 .controlBlock {
