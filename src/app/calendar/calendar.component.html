@@ -19,8 +19,9 @@
     <tbody>
       <tr *ngFor="let week of monthArray">
         <ng-container *ngFor="let currentDay of week">
-          <td class="day" (click)="updateDay(currentDay)" [class.selected]="currentDay == day" [class.hidden]="currentDay == ''" [class.warning]="!monthOverview[currentDay-1]" title="{{ !monthOverview[currentDay-1] ? 'Still need volunteers.' : 'All positions filled.' }}">
+          <td class="day" (click)="updateDay(currentDay)" [class.selected]="currentDay == day" [class.hidden]="currentDay == ''" title="{{ !monthOverview[currentDay-1] ? 'Still need volunteers.' : 'All positions filled.' }}">
             <span>{{ currentDay > 0 ? currentDay : "" }}</span>
+            <img *ngIf="!monthOverview[currentDay-1] && currentDay != ''" class="warning" src="./assets/warning-grey.png" />
           </td>
         </ng-container>
       </tr>
