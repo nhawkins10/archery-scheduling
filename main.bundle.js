@@ -250,7 +250,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".calendar {\r\n  background-color: #ffffff;\r\n  display: inline-block;\r\n  z-index: 300;\r\n  position: relative;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n .calendar {\r\n    width: 100%;\r\n    box-shadow: 0px 2px 5px #aaa;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .calendar {\r\n    width: 49%;\r\n    box-shadow: 5px 5px 5px #aaa;\r\n  }\r\n}\r\n\r\n.selected {\r\n  color: #de1f1f;\r\n  background-color: #f1f1f1;\r\n  font-weight: bold;\r\n}\r\n\r\n.day.hidden {\r\n  border: 1px solid transparent;\r\n}\r\n\r\n.monthHeader {\r\n  font-size: 30px;\r\n  width: 100%;\r\n  text-align: center;\r\n  margin: 20px 0;\r\n}\r\n\r\n.month {\r\n  font-weight: bold;\r\n}\r\n\r\n.monthBack {\r\n  color: #555;\r\n  padding-right: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.monthAhead {\r\n  color: #555;\r\n  padding-left: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.calendarGrid {\r\n  width: 100%;\r\n}\r\n\r\n.dayHeader {\r\n  text-align: center;\r\n}\r\n\r\n.day {\r\n  border: 1px solid #ececec;\r\n  text-align: center;\r\n  height: 50px;\r\n  width: 14%;\r\n  cursor: pointer;\r\n}\r\n\r\n.empty {\r\n  border: 1px solid transparent;\r\n}\r\n", ""]);
+exports.push([module.i, ".calendar {\r\n  background-color: #ffffff;\r\n  display: inline-block;\r\n  z-index: 300;\r\n  position: relative;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n .calendar {\r\n    width: 100%;\r\n    box-shadow: 0px 2px 5px #aaa;\r\n  }\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .calendar {\r\n    width: 49%;\r\n    box-shadow: 5px 5px 5px #aaa;\r\n  }\r\n}\r\n\r\n.selected {\r\n  color: #de1f1f;\r\n  background-color: #f1f1f1;\r\n  font-weight: bold;\r\n}\r\n\r\n.day.hidden {\r\n  border: 1px solid transparent;\r\n}\r\n\r\n.monthHeader {\r\n  font-size: 30px;\r\n  width: 100%;\r\n  text-align: center;\r\n  margin: 20px 0;\r\n}\r\n\r\n.month {\r\n  font-weight: bold;\r\n}\r\n\r\n.monthBack {\r\n  color: #555;\r\n  padding-right: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.monthAhead {\r\n  color: #555;\r\n  padding-left: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.calendarGrid {\r\n  width: 100%;\r\n}\r\n\r\n.dayHeader {\r\n  text-align: center;\r\n}\r\n\r\n.day {\r\n  border: 1px solid #ececec;\r\n  text-align: center;\r\n  height: 50px;\r\n  width: 14%;\r\n  cursor: pointer;\r\n}\r\n\r\n@media (min-width: 901px) {\r\n  .day.warning {\r\n    background-image: url('/assets/warning-grey.png');\r\n    background-position: 90% 10%;\r\n    background-size: 15%;\r\n    background-repeat: no-repeat;\r\n  }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n  .day.warning {\r\n    background-image: url('/assets/warning-grey.png');\r\n    background-position: 90% 10%;\r\n    background-size: 24%;\r\n    background-repeat: no-repeat;\r\n  }\r\n}\r\n\r\n.day.hidden.warning {\r\n  background: transparent;\r\n}\r\n\r\n.empty {\r\n  border: 1px solid transparent;\r\n}\r\n", ""]);
 
 // exports
 
@@ -263,7 +263,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/calendar/calendar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"calendar\">\r\n  <div class=\"monthHeader\">\r\n    <span class=\"monthBack\" (click)=\"decrementMonth()\">&lt;</span>\r\n    <span class=\"month\">{{ monthNames[month] }} {{ showYear() ? year : '' }}</span>\r\n    <span class=\"monthAhead\" (click)=\"incrementMonth()\">&gt;</span>\r\n  </div>\r\n  <table class=\"calendarGrid\">\r\n    <thead>\r\n      <tr>\r\n        <td class=\"dayHeader\">Sun</td>\r\n        <td class=\"dayHeader\">Mon</td>\r\n        <td class=\"dayHeader\">Tue</td>\r\n        <td class=\"dayHeader\">Wed</td>\r\n        <td class=\"dayHeader\">Thu</td>\r\n        <td class=\"dayHeader\">Fri</td>\r\n        <td class=\"dayHeader\">Sat</td>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let week of monthArray\">\r\n        <ng-container *ngFor=\"let currentDay of week\">\r\n          <td class=\"day\" (click)=\"updateDay(currentDay)\" [class.selected]=\"currentDay == day\" [class.hidden]=\"currentDay == ''\">\r\n            <span>{{ currentDay > 0 ? currentDay : \"\" }}</span>\r\n          </td>\r\n        </ng-container>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"controlBlock\">\r\n    <button (click)=\"goToToday()\">Go To Today</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"calendar\">\r\n  <div class=\"monthHeader\">\r\n    <span class=\"monthBack\" (click)=\"decrementMonth()\">&lt;</span>\r\n    <span class=\"month\">{{ monthNames[month] }} {{ showYear() ? year : '' }}</span>\r\n    <span class=\"monthAhead\" (click)=\"incrementMonth()\">&gt;</span>\r\n  </div>\r\n  <table class=\"calendarGrid\">\r\n    <thead>\r\n      <tr>\r\n        <td class=\"dayHeader\">Sun</td>\r\n        <td class=\"dayHeader\">Mon</td>\r\n        <td class=\"dayHeader\">Tue</td>\r\n        <td class=\"dayHeader\">Wed</td>\r\n        <td class=\"dayHeader\">Thu</td>\r\n        <td class=\"dayHeader\">Fri</td>\r\n        <td class=\"dayHeader\">Sat</td>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let week of monthArray\">\r\n        <ng-container *ngFor=\"let currentDay of week\">\r\n          <td class=\"day\" (click)=\"updateDay(currentDay)\" [class.selected]=\"currentDay == day\" [class.hidden]=\"currentDay == ''\" [class.warning]=\"!monthOverview[currentDay-1]\" title=\"{{ !monthOverview[currentDay-1] ? 'Still need volunteers.' : 'All positions filled.' }}\">\r\n            <span>{{ currentDay > 0 ? currentDay : \"\" }}</span>\r\n          </td>\r\n        </ng-container>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"controlBlock\">\r\n    <button (click)=\"goToToday()\">Go To Today</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -444,6 +444,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
     __metadata("design:type", Object)
 ], Calendar.prototype, "day", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], Calendar.prototype, "monthOverview", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
     __metadata("design:type", Object)
@@ -692,7 +696,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/scheduling.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <img class=\"logoImg\" src=\"./assets/logo-img.png\" />\r\n  <img class=\"logoText\" src=\"./assets/logo-text.png\" />\r\n  <!--<div class=\"headerText\">{{ title }}</div>-->\r\n</div>\r\n<calendar [year]=\"year\" [month]=\"month\" [day]=\"day\" (onDayChanged)=\"onDayChanged($event)\" (onMonthChanged)=\"onMonthChanged($event)\" (onYearChanged)=\"onYearChanged($event)\" ></calendar>\r\n<roster [volunteers]=\"volunteers\" [locked]=\"locked\" (onWorkingChanged)=\"onWorkingChanged($event)\" (onEdit)=\"onEdit($event)\" (onOpenAuth)=\"openAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onDelete)=\"onDelete($event)\"></roster>\r\n<roster-edit *ngIf=\"showEdit\" (onAddVolunteer)=\"onAddVolunteer($event)\" (onHideEdit)=\"onHideEdit($event)\"></roster-edit>\r\n<authentication *ngIf=\"showAuth\" [locked]=\"locked\" (onHideAuth)=\"onHideAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onPasswordChanged)=\"onPasswordChanged($event)\"></authentication>\r\n\r\n"
+module.exports = "<div class=\"header\">\r\n  <img class=\"logoImg\" src=\"./assets/logo-img.png\" />\r\n  <img class=\"logoText\" src=\"./assets/logo-text.png\" />\r\n  <!--<div class=\"headerText\">{{ title }}</div>-->\r\n</div>\r\n<calendar [year]=\"year\" [month]=\"month\" [day]=\"day\" [monthOverview]=\"monthOverview\" (onDayChanged)=\"onDayChanged($event)\" (onMonthChanged)=\"onMonthChanged($event)\" (onYearChanged)=\"onYearChanged($event)\" ></calendar>\r\n<roster [volunteers]=\"volunteers\" [locked]=\"locked\" (onWorkingChanged)=\"onWorkingChanged($event)\" (onEdit)=\"onEdit($event)\" (onOpenAuth)=\"openAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onDelete)=\"onDelete($event)\"></roster>\r\n<roster-edit *ngIf=\"showEdit\" (onAddVolunteer)=\"onAddVolunteer($event)\" (onHideEdit)=\"onHideEdit($event)\"></roster-edit>\r\n<authentication *ngIf=\"showAuth\" [locked]=\"locked\" (onHideAuth)=\"onHideAuth($event)\" (onToggleLock)=\"onToggleLock($event)\" (onPasswordChanged)=\"onPasswordChanged($event)\"></authentication>\r\n"
 
 /***/ }),
 
@@ -721,8 +725,8 @@ var Scheduling = (function () {
         this.year = new Date().getFullYear();
         this.month = new Date().getMonth();
         this.day = new Date().getDate();
-        this.roster = [];
         this.volunteers = [];
+        this.monthOverview = [];
         this.showEdit = false;
         this.showAuth = false;
         this.locked = false;
@@ -740,7 +744,7 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onDayChanged = function (day) {
         this.day = day;
-        this.getMonthData();
+        this.getDayData();
     };
     /*
      * Updates the current month and retrieves
@@ -752,7 +756,8 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onMonthChanged = function (month) {
         this.month = month;
-        this.getMonthData();
+        this.getDayData();
+        this.getMonthOverview();
     };
     /*
      * Updates the current year and retrieves
@@ -764,22 +769,11 @@ var Scheduling = (function () {
      */
     Scheduling.prototype.onYearChanged = function (year) {
         this.year = year;
-        this.getMonthData();
+        this.getDayData();
     };
     //---------------------------------------//
     //            Roster Functions           //
     //---------------------------------------//
-    /*
-     * Retrieves the list of current members
-     * and stores the list in a local variable.
-     *
-     * @return none
-     */
-    //  getRoster() {
-    //    this.schedulingService.getRoster().then(function(roster) {
-    //      this.roster = roster;
-    //    }.bind(this));
-    //  }
     /*
      * Adds a new volunteer to the list for the current day
      *
@@ -790,7 +784,8 @@ var Scheduling = (function () {
         var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
         var personData = JSON.parse(person);
         this.schedulingService.saveVolunteer(dataKey, this.day, personData).then(function () {
-            this.getMonthData();
+            this.getDayData();
+            this.getMonthOverview();
         }.bind(this));
     };
     /*
@@ -810,15 +805,26 @@ var Scheduling = (function () {
         this.showEdit = true;
     };
     /*
+     * Determine if days have all slots filled.
+     *
+     * @return none
+     */
+    Scheduling.prototype.getMonthOverview = function () {
+        var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+        this.schedulingService.getMonthOverview(dataKey).then(function (monthOverview) {
+            this.monthOverview = monthOverview;
+        }.bind(this));
+    };
+    /*
      * Retrieves the list of volunteers
      * for a given date and stores the list in a
      * local variable.
      *
      * @return none
      */
-    Scheduling.prototype.getMonthData = function () {
+    Scheduling.prototype.getDayData = function () {
         var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-        this.schedulingService.getMonthData(dataKey, this.day).then(function (volunteers) {
+        this.schedulingService.getDayData(dataKey, this.day).then(function (volunteers) {
             this.volunteers = volunteers;
         }.bind(this));
     };
@@ -832,7 +838,7 @@ var Scheduling = (function () {
     Scheduling.prototype.saveVolunteer = function (person) {
         var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
         this.schedulingService.saveVolunteer(dataKey, this.day, person).then(function () {
-            this.getMonthData();
+            this.getDayData();
         }.bind(this));
     };
     /*
@@ -862,7 +868,7 @@ var Scheduling = (function () {
         if (!personData.selected) {
             var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
             this.schedulingService.deleteVolunteer(dataKey, this.day, personData).then(function () {
-                this.getMonthData();
+                this.getDayData();
             }.bind(this));
         }
         else {
@@ -927,7 +933,8 @@ var Scheduling = (function () {
      * @return none
      */
     Scheduling.prototype.ngOnInit = function () {
-        this.getMonthData();
+        this.getDayData();
+        this.getMonthOverview();
         this.getLocked();
     };
     Scheduling.prototype.ngOnChanges = function () {
@@ -970,33 +977,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SchedulingService = (function () {
     function SchedulingService(db) {
         this.db = db;
-        this.roster = [];
         this.volunteers = [];
+        this.monthOverview = [];
         this.path = "";
     }
-    SchedulingService.prototype.getRoster = function () {
+    SchedulingService.prototype.getMonthOverview = function (dataKey) {
         return new Promise(function (resolve, reject) {
             var _this = this;
-            this.db.list('/roster')
+            this.db.object('/months')
                 .subscribe(function (snapshots) {
-                _this.roster = [];
-                snapshots.forEach(function (snapshot) {
-                    _this.roster.push(snapshot);
-                });
-                resolve(_this.roster);
+                console.log(snapshots);
+                _this.monthOverview = [];
+                for (var index = 0; index < 31; index++) {
+                    if (!snapshots[dataKey] || !snapshots[dataKey][index + 1]) {
+                        _this.monthOverview.push(false);
+                    }
+                    else {
+                        //object to represent all available positions
+                        var filled = {
+                            RANGE: {
+                                BEFORE: false,
+                                AFTER: false
+                            },
+                            DESK: {
+                                BEFORE: false,
+                                AFTER: false
+                            }
+                        };
+                        //loop through volunteers and mark off each position that is filled
+                        snapshots[dataKey][index + 1].forEach(function (entry) {
+                            if (entry.when == 'BOTH') {
+                                filled[entry.role].BEFORE = true;
+                                filled[entry.role].AFTER = true;
+                            }
+                            else {
+                                filled[entry.role][entry.when] = true;
+                            }
+                        });
+                        //check if all positions are filled
+                        if (filled.RANGE.BEFORE
+                            && filled.RANGE.AFTER
+                            && filled.DESK.BEFORE
+                            && filled.DESK.AFTER) {
+                            _this.monthOverview.push(true);
+                        }
+                        else {
+                            _this.monthOverview.push(false);
+                        }
+                    }
+                }
+                resolve(_this.monthOverview);
             });
         }.bind(this));
     };
-    SchedulingService.prototype.saveRoster = function (roster) {
-        var updates = {};
-        updates['/roster'] = roster;
-        return new Promise(function (resolve, reject) {
-            this.db.object('/')
-                .update(updates);
-            resolve("success");
-        }.bind(this));
-    };
-    SchedulingService.prototype.getMonthData = function (dataKey, dayKey) {
+    SchedulingService.prototype.getDayData = function (dataKey, dayKey) {
         return new Promise(function (resolve, reject) {
             var _this = this;
             this.db.object('/months')
