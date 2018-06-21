@@ -497,7 +497,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/roster-edit/roster-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"rosterEdit\">\r\n  <div class=\"overlay\"></div>\r\n  <div class=\"rosterEditContent\">\r\n    <h2>Sign Up</h2>\r\n\r\n    <div class=\"formSection name\">\r\n      <div class=\"title\">Name</div>\r\n      <input type=\"text\" [(ngModel)]=\"name\" />\r\n    </div>\r\n    <div class=\"form\">\r\n      <div class=\"formSection time\">\r\n        <div class=\"title\">Time</div>\r\n        <input type=\"radio\" name=\"time\" id=\"time-before\" checked [(ngModel)]=\"when\" value=\"BEFORE\" /><label for=\"time-before\">Before Service</label>\r\n        <input type=\"radio\" name=\"time\" id=\"time-after\" [(ngModel)]=\"when\" value=\"AFTER\"/><label for=\"time-after\">After<br> Service</label>\r\n        <input type=\"radio\" name=\"time\" id=\"time-both\" [(ngModel)]=\"when\" value=\"BOTH\"/><label for=\"time-both\">Before & After</label>\r\n      </div>\r\n\r\n      <div class=\"formSection position\">\r\n        <div class=\"title\">Position</div>\r\n        <input type=\"radio\" name=\"role\" id=\"role-range\" checked [(ngModel)]=\"role\" value=\"RANGE\" />\r\n        <label for=\"role-range\">\r\n          <table>\r\n            <tr>\r\n              <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}\" /></td>\r\n              <td>Range Captain</td>\r\n            </tr>\r\n          </table>\r\n        </label>\r\n\r\n        <input type=\"radio\" name=\"role\" id=\"role-desk\" [(ngModel)]=\"role\" value=\"DESK\" />\r\n        <label for=\"role-desk\">\r\n          <table>\r\n            <tr>\r\n              <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}\" /></td>\r\n              <td>Check In Desk</td>\r\n            </tr>\r\n          </table>\r\n        </label>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"controlBlock\">\r\n      <button (click)=\"cancel()\" class=\"secondaryButton\">Cancel</button>\r\n      <button (click)=\"save()\">Save</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"rosterEdit\">\r\n  <div class=\"overlay\"></div>\r\n  <div class=\"rosterEditContent\">\r\n    <h2>Sign Up</h2>\r\n\r\n    <div class=\"formSection name\">\r\n      <div class=\"title\">Name</div>\r\n      <input type=\"text\" [(ngModel)]=\"name\" autocomplete=\"name\" />\r\n    </div>\r\n    <div class=\"form\">\r\n      <div class=\"formSection time\">\r\n        <div class=\"title\">Time</div>\r\n        <input type=\"radio\" name=\"time\" id=\"time-before\" checked [(ngModel)]=\"when\" value=\"BEFORE\" /><label for=\"time-before\">Before Service</label>\r\n        <input type=\"radio\" name=\"time\" id=\"time-after\" [(ngModel)]=\"when\" value=\"AFTER\"/><label for=\"time-after\">After<br> Service</label>\r\n        <input type=\"radio\" name=\"time\" id=\"time-both\" [(ngModel)]=\"when\" value=\"BOTH\"/><label for=\"time-both\">Before & After</label>\r\n      </div>\r\n\r\n      <div class=\"formSection position\">\r\n        <div class=\"title\">Position</div>\r\n        <input type=\"radio\" name=\"role\" id=\"role-range\" checked [(ngModel)]=\"role\" value=\"RANGE\" />\r\n        <label for=\"role-range\">\r\n          <table>\r\n            <tr>\r\n              <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}\" /></td>\r\n              <td>Range Captain</td>\r\n            </tr>\r\n          </table>\r\n        </label>\r\n\r\n        <input type=\"radio\" name=\"role\" id=\"role-desk\" [(ngModel)]=\"role\" value=\"DESK\" />\r\n        <label for=\"role-desk\">\r\n          <table>\r\n            <tr>\r\n              <td style=\"width:40%\"><img class=\"smallIcon\" src=\"{{ role === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}\" /></td>\r\n              <td>Check In Desk</td>\r\n            </tr>\r\n          </table>\r\n        </label>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"controlBlock\">\r\n      <button (click)=\"cancel()\" class=\"secondaryButton\">Cancel</button>\r\n      <button (click)=\"save()\">Save</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -526,12 +526,17 @@ var RosterEdit = (function () {
         this.role = 'RANGE';
     }
     RosterEdit.prototype.save = function () {
+        if (!this.name) {
+            alert('Name is required.');
+            return;
+        }
         var person = {
             'name': this.name,
             'when': this.when,
             'role': this.role,
             'selected': false
         };
+        window.localStorage.setItem('name', this.name);
         this.onAddVolunteer.emit(JSON.stringify(person));
         this.onHideEdit.emit();
     };
@@ -539,6 +544,9 @@ var RosterEdit = (function () {
         this.onHideEdit.emit();
     };
     RosterEdit.prototype.ngOnInit = function () {
+        if (localStorage.getItem('name')) {
+            this.name = localStorage.getItem('name');
+        }
     };
     return RosterEdit;
 }());
