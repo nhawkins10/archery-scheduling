@@ -3,37 +3,61 @@ import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase }
 
 @Injectable()
 export class SchedulingService {
-  roster = []
   volunteers = [];
+  monthOverview = [];
   path = "";
 
   constructor(private db: AngularFireDatabase) {}
 
-  getRoster() {
+  getMonthOverview(dataKey) {
     return new Promise(function(resolve, reject) {
-      this.db.list('/roster')
+      this.db.object('/months')
         .subscribe(snapshots => {
-          this.roster = [];
-          snapshots.forEach(snapshot => {
-            this.roster.push(snapshot);
-          });
-          resolve(this.roster);
+          console.log(snapshots);
+          this.monthOverview = [];
+          for (var index=0; index<31; index++) {
+            if (!snapshots[dataKey] || !snapshots[dataKey][index+1]) {
+              this.monthOverview.push(false);
+            } else {
+              //object to represent all available positions
+              var filled = {
+                RANGE: {
+                  BEFORE: false,
+                  AFTER: false
+                },
+                DESK: {
+                  BEFORE: false,
+                  AFTER: false
+                }
+              };
+
+              //loop through volunteers and mark off each position that is filled
+              snapshots[dataKey][index+1].forEach(function(entry) {
+                if (entry.when == 'BOTH') {
+                  filled[entry.role].BEFORE = true;
+                  filled[entry.role].AFTER = true;
+                } else {
+                  filled[entry.role][entry.when] = true;
+                }
+              });
+
+              //check if all positions are filled
+              if (filled.RANGE.BEFORE
+                  && filled.RANGE.AFTER
+                  && filled.DESK.BEFORE
+                  && filled.DESK.AFTER) {
+                this.monthOverview.push(true);
+              } else {
+                this.monthOverview.push(false);
+              }
+            }
+          }
+          resolve(this.monthOverview);
         });
     }.bind(this));
   }
 
-  saveRoster(roster) {
-    var updates = {};
-    updates['/roster'] = roster;
-
-    return new Promise(function(resolve, reject) {
-      this.db.object('/')
-        .update(updates);
-        resolve("success");
-    }.bind(this));
-  }
-
-  getMonthData(dataKey, dayKey) {
+  getDayData(dataKey, dayKey) {
     return new Promise(function(resolve, reject) {
       this.db.object('/months')
         .subscribe(snapshots => {

@@ -68,6 +68,28 @@
   cursor: pointer;
 }
 
+@media (min-width: 901px) {
+  .day.warning {
+    background-image: url('./~/assets/warning-grey.png');
+    background-position: 90% 10%;
+    background-size: 15%;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 900px) {
+  .day.warning {
+    background-image: url('./~/assets/warning-grey.png');
+    background-position: 90% 10%;
+    background-size: 24%;
+    background-repeat: no-repeat;
+  }
+}
+
+.day.hidden.warning {
+  background: transparent;
+}
+
 .empty {
   border: 1px solid transparent;
 }

@@ -1,4 +1,4 @@
-# scheduling-coordinator
+# archery-scheduling
 
 A web application to help with archery range schedule coordination at Paradise Outfitter Ministries.
 
@@ -10,6 +10,6 @@ Site can be accessed [here](https://nhawkins10.github.io/archery-scheduling/).
 ### Deploying to gh-pages
 Documentation can be found [here](https://www.npmjs.com/package/angular-cli-ghpages).
 
-First: ` ng build --prod --base-href "https://nhawkins10.github.io/archery-scheduling/" `
+First: ` ng build --base-href "https://nhawkins10.github.io/archery-scheduling/" `
 
 Second: `ngh`

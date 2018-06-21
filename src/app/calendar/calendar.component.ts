@@ -14,6 +14,7 @@ export class Calendar {
   @Input() year;
   @Input() month;
   @Input() day;
+  @Input() monthOverview;
   @Output() onDayChanged = new EventEmitter<String>();
   @Output() onMonthChanged = new EventEmitter<String>();
   @Output() onYearChanged = new EventEmitter<String>();

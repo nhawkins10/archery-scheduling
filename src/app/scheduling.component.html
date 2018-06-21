@@ -3,8 +3,7 @@
   <img class="logoText" src="./assets/logo-text.png" />
   <!--<div class="headerText">{{ title }}</div>-->
 </div>
-<calendar [year]="year" [month]="month" [day]="day" (onDayChanged)="onDayChanged($event)" (onMonthChanged)="onMonthChanged($event)" (onYearChanged)="onYearChanged($event)" ></calendar>
+<calendar [year]="year" [month]="month" [day]="day" [monthOverview]="monthOverview" (onDayChanged)="onDayChanged($event)" (onMonthChanged)="onMonthChanged($event)" (onYearChanged)="onYearChanged($event)" ></calendar>
 <roster [volunteers]="volunteers" [locked]="locked" (onWorkingChanged)="onWorkingChanged($event)" (onEdit)="onEdit($event)" (onOpenAuth)="openAuth($event)" (onToggleLock)="onToggleLock($event)" (onDelete)="onDelete($event)"></roster>
 <roster-edit *ngIf="showEdit" (onAddVolunteer)="onAddVolunteer($event)" (onHideEdit)="onHideEdit($event)"></roster-edit>
 <authentication *ngIf="showAuth" [locked]="locked" (onHideAuth)="onHideAuth($event)" (onToggleLock)="onToggleLock($event)" (onPasswordChanged)="onPasswordChanged($event)"></authentication>
-

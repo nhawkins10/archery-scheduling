@@ -14,8 +14,8 @@ export class Scheduling implements OnInit{
   month = new Date().getMonth();
   day = new Date().getDate();
 
-  roster = [];
   volunteers = [];
+  monthOverview = [];
 
   showEdit = false;
   showAuth = false;
@@ -37,7 +37,7 @@ export class Scheduling implements OnInit{
    */
   onDayChanged(day: number) {
     this.day = day;
-    this.getMonthData();
+    this.getDayData();
   }
 
   /*
@@ -50,7 +50,8 @@ export class Scheduling implements OnInit{
    */
   onMonthChanged(month: number) {
     this.month = month;
-    this.getMonthData();
+    this.getDayData();
+    this.getMonthOverview();
   }
 
   /*
@@ -63,25 +64,13 @@ export class Scheduling implements OnInit{
    */
   onYearChanged(year: number) {
     this.year = year;
-    this.getMonthData();
+    this.getDayData();
   }
 
 
   //---------------------------------------//
   //            Roster Functions           //
   //---------------------------------------//
-
-  /*
-   * Retrieves the list of current members
-   * and stores the list in a local variable.
-   *
-   * @return none
-   */
-//  getRoster() {
-//    this.schedulingService.getRoster().then(function(roster) {
-//      this.roster = roster;
-//    }.bind(this));
-//  }
 
   /*
    * Adds a new volunteer to the list for the current day
@@ -93,7 +82,8 @@ export class Scheduling implements OnInit{
    let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
    var personData = JSON.parse(person);
    this.schedulingService.saveVolunteer(dataKey, this.day, personData).then(function() {
-     this.getMonthData();
+     this.getDayData();
+     this.getMonthOverview();
    }.bind(this));
   }
 
@@ -116,15 +106,27 @@ export class Scheduling implements OnInit{
   }
 
   /*
+   * Determine if days have all slots filled.
+   *
+   * @return none
+   */
+  getMonthOverview() {
+    var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
+    this.schedulingService.getMonthOverview(dataKey).then(function(monthOverview) {
+      this.monthOverview = monthOverview;
+    }.bind(this));
+  }
+
+  /*
    * Retrieves the list of volunteers
    * for a given date and stores the list in a
    * local variable.
    *
    * @return none
    */
-  getMonthData() {
+  getDayData() {
     var dataKey = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
-    this.schedulingService.getMonthData(dataKey, this.day).then(function(volunteers) {
+    this.schedulingService.getDayData(dataKey, this.day).then(function(volunteers) {
       this.volunteers = volunteers;
     }.bind(this));
   }
@@ -139,7 +141,7 @@ export class Scheduling implements OnInit{
   saveVolunteer(person) {
     let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
     this.schedulingService.saveVolunteer(dataKey, this.day, person).then(function() {
-      this.getMonthData();
+      this.getDayData();
     }.bind(this));
   }
 
@@ -170,7 +172,7 @@ export class Scheduling implements OnInit{
     if (!personData.selected) {
       let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
       this.schedulingService.deleteVolunteer(dataKey, this.day, personData).then(function() {
-        this.getMonthData();
+        this.getDayData();
       }.bind(this));
     } else {
       alert("This person is currently scheduled to work and cannot be deleted.");
@@ -242,7 +244,8 @@ export class Scheduling implements OnInit{
    * @return none
    */
   ngOnInit(): void {
-    this.getMonthData();
+    this.getDayData();
+    this.getMonthOverview();
     this.getLocked();
   }
 
