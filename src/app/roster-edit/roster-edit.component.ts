@@ -13,12 +13,17 @@ export class RosterEdit {
   role = 'RANGE';
 
   save() {
+    if (!this.name) {
+      alert('Name is required.');
+      return;
+    }
     var person = {
       'name': this.name,
       'when': this.when,
       'role': this.role,
       'selected': false
     }
+    window.localStorage.setItem('name', this.name);
     this.onAddVolunteer.emit(JSON.stringify(person));
     this.onHideEdit.emit();
   }
@@ -28,6 +33,8 @@ export class RosterEdit {
   }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('name')) {
+      this.name = localStorage.getItem('name');
+    }
   }
 }
