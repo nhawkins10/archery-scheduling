@@ -10,15 +10,23 @@ body {
   font-size: 18px;
 }
 
+.centerText {
+  text-align: center;
+}
+
+.topMargin40 {
+  margin-top: 40px;
+}
+
 @media (min-width: 901px) {
   .smallIcon {
-    width: 30px;
+    width: 20px;
   }
 }
 
 @media (max-width: 900px) {
   .smallIcon {
-    width: 20px;
+    width: 15px;
   }
 }
 

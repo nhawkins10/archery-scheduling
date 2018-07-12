@@ -34,10 +34,10 @@ export class SchedulingService {
               //loop through volunteers and mark off each position that is filled
               snapshots[dataKey][index+1].forEach(function(entry) {
                 if (entry.when == 'BOTH') {
-                  filled[entry.role].BEFORE = true;
-                  filled[entry.role].AFTER = true;
+                  filled[entry.role1].BEFORE = true;
+                  filled[entry.role2].AFTER = true;
                 } else {
-                  filled[entry.role][entry.when] = true;
+                  filled[entry.role1][entry.when] = true;
                 }
               });
 

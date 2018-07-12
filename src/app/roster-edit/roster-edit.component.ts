@@ -10,7 +10,8 @@ export class RosterEdit {
   @Output() onHideEdit = new EventEmitter<String>();
   name = '';
   when = 'BEFORE';
-  role = 'RANGE';
+  role1 = 'RANGE';
+  role2 = 'DESK';
 
   save() {
     if (!this.name) {
@@ -20,7 +21,8 @@ export class RosterEdit {
     var person = {
       'name': this.name,
       'when': this.when,
-      'role': this.role,
+      'role1': this.role1,
+      'role2': this.role2,
       'selected': false
     }
     window.localStorage.setItem('name', this.name);

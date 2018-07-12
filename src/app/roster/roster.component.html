@@ -21,11 +21,20 @@
               <span *ngIf="person.when == 'AFTER'">After Service</span>
               <span *ngIf="person.when == 'BOTH'">Before & After</span>
             </td>
-            <td width="10%">
-              <span *ngIf="person.role == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
-              <span *ngIf="person.role == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
+            <td width="10%" class="centerText" *ngIf="person.when != 'BOTH'">
+              <span class="iconFiller" *ngIf="person.when == 'AFTER'">&nbsp;</span>
+              <span *ngIf="person.role1 == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
+              <span *ngIf="person.role1 == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
+              <span class="iconFiller" *ngIf="person.when == 'BEFORE'">&nbsp;</span>
             </td>
-            <td width="10%"><span title="Delete"><img class="smallIcon pointer" src="./assets/trash.png" (click)="delete(person)"/></span></td>
+            <td width="10%" class="centerText" *ngIf="person.when == 'BOTH'">
+              <span *ngIf="person.role1 == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
+              <span *ngIf="person.role1 == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
+              <!--<span>|</span>-->
+              <span *ngIf="person.role2 == 'RANGE'" title="Range Captain"><img class="smallIcon" src="./assets/target.png" /></span>
+              <span *ngIf="person.role2 == 'DESK'" title="Check In Deck"><img class="smallIcon" src="./assets/pen.png" /></span>
+            </td>
+            <td width="10%" class="centerText"><span title="Delete"><img class="smallIcon pointer" src="./assets/trash.png" (click)="delete(person)"/></span></td>
           </tr>
         </table>
       </li>

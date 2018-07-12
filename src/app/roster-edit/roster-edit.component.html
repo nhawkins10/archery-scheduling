@@ -3,40 +3,88 @@
   <div class="rosterEditContent">
     <h2>Sign Up</h2>
 
-    <div class="formSection name">
-      <div class="title">Name</div>
-      <input type="text" [(ngModel)]="name" autocomplete="name" />
-    </div>
-    <div class="form">
-      <div class="formSection time">
-        <div class="title">Time</div>
-        <input type="radio" name="time" id="time-before" checked [(ngModel)]="when" value="BEFORE" /><label for="time-before">Before Service</label>
-        <input type="radio" name="time" id="time-after" [(ngModel)]="when" value="AFTER"/><label for="time-after">After<br> Service</label>
-        <input type="radio" name="time" id="time-both" [(ngModel)]="when" value="BOTH"/><label for="time-both">Before & After</label>
+    <div class="formOverflow">
+
+      <div class="formSection name">
+        <div class="title">Name</div>
+        <input type="text" [(ngModel)]="name" autocomplete="name" />
+      </div>
+      <div class="form">
+        <div class="formSection time">
+          <div class="title">Time</div>
+          <input type="radio" name="time" id="time-before" checked [(ngModel)]="when" value="BEFORE" /><label for="time-before">Before Service</label>
+          <input type="radio" name="time" id="time-after" [(ngModel)]="when" value="AFTER"/><label for="time-after">After<br> Service</label>
+          <input type="radio" name="time" id="time-both" [(ngModel)]="when" value="BOTH"/><label for="time-both">Before & After</label>
+        </div>
+
+        <div class="formSection position" *ngIf="when != 'BOTH'">
+          <div class="title">Position</div>
+          <input type="radio" name="role1" id="role-range" checked [(ngModel)]="role1" value="RANGE" />
+          <label for="role-range">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role1 === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}" /></td>
+                <td>Range Captain</td>
+              </tr>
+            </table>
+          </label>
+
+          <input type="radio" name="role1" id="role-desk" [(ngModel)]="role1" value="DESK" />
+          <label for="role-desk">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role1 === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}" /></td>
+                <td>Check In Desk</td>
+              </tr>
+            </table>
+          </label>
+        </div>
+
+        <div class="formSection position" *ngIf="when == 'BOTH'">
+          <div class="title">Position Before</div>
+          <input type="radio" name="role1" id="role1-range" checked [(ngModel)]="role1" value="RANGE" />
+          <label for="role1-range">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role1 === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}" /></td>
+                <td>Range Captain</td>
+              </tr>
+            </table>
+          </label>
+
+          <input type="radio" name="role1" id="role1-desk" [(ngModel)]="role1" value="DESK" />
+          <label for="role1-desk">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role1 === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}" /></td>
+                <td>Check In Desk</td>
+              </tr>
+            </table>
+          </label>
+
+          <div class="title topMargin40">Position After</div>
+          <input type="radio" name="role2" id="role2-range" checked [(ngModel)]="role2" value="RANGE" />
+          <label for="role2-range">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role2 === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}" /></td>
+                <td>Range Captain</td>
+              </tr>
+            </table>
+          </label>
+
+          <input type="radio" name="role2" id="role2-desk" [(ngModel)]="role2" value="DESK" />
+          <label for="role2-desk">
+            <table>
+              <tr>
+                <td style="width:40%"><img class="smallIcon" src="{{ role2 === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}" /></td>
+                <td>Check In Desk</td>
+              </tr>
+            </table>
+          </label>
+        </div>
       </div>
 
-      <div class="formSection position">
-        <div class="title">Position</div>
-        <input type="radio" name="role" id="role-range" checked [(ngModel)]="role" value="RANGE" />
-        <label for="role-range">
-          <table>
-            <tr>
-              <td style="width:40%"><img class="smallIcon" src="{{ role === 'RANGE' ? './assets/target-white.png' : './assets/target.png' }}" /></td>
-              <td>Range Captain</td>
-            </tr>
-          </table>
-        </label>
-
-        <input type="radio" name="role" id="role-desk" [(ngModel)]="role" value="DESK" />
-        <label for="role-desk">
-          <table>
-            <tr>
-              <td style="width:40%"><img class="smallIcon" src="{{ role === 'DESK' ? './assets/pen-white.png' : './assets/pen.png' }}" /></td>
-              <td>Check In Desk</td>
-            </tr>
-          </table>
-        </label>
-      </div>
     </div>
 
     <div class="controlBlock">

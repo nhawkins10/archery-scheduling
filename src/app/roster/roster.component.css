@@ -128,3 +128,19 @@ li:not(.locked):hover .smallIcon.reduced {
   opacity: 0;
 }
 
+@media (min-width: 901px) {
+  .iconFiller {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 900px) {
+  .iconFiller {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+  }
+}
+
