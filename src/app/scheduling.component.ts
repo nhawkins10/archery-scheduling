@@ -173,6 +173,7 @@ export class Scheduling implements OnInit{
       let dataKey: string = this.year + "-" + (this.month < 10 ? "0" + this.month : this.month);
       this.schedulingService.deleteVolunteer(dataKey, this.day, personData).then(function() {
         this.getDayData();
+        this.getMonthOverview();
       }.bind(this));
     } else {
       alert("This person is currently scheduled to work and cannot be deleted.");
