@@ -43,6 +43,20 @@
 }
 
 @media (min-width: 901px) {
+  .formOverflow {
+    overflow-y: auto;
+    height: 80%;
+  }
+}
+
+@media (max-width: 900px) {
+  .formOverflow {
+    overflow-y: auto;
+    height: 60%;
+  }
+}
+
+@media (min-width: 901px) {
   .formSection {
     padding: 20px;
   }
@@ -145,7 +159,30 @@ input[type="radio"]:checked +label {
   }
 }
 
-.controlBlock {
-  position: absolute;
-  bottom: 0;
+@media (min-width: 901px) {
+  .formSection.position .positionAfter {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .formSection.position .positionAfter {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 901px) {
+  .controlBlock {
+    position: relative;
+    bottom: 0;
+    border-top: 1px solid #aaa;
+  }
+}
+
+@media (max-width: 900px) {
+  .controlBlock {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #aaa;
+  }
 }

@@ -14,10 +14,6 @@ body {
   text-align: center;
 }
 
-.topMargin40 {
-  margin-top: 40px;
-}
-
 @media (min-width: 901px) {
   .smallIcon {
     width: 20px;
