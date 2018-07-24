@@ -19,6 +19,14 @@ export class RosterEdit {
       alert('Name is required.');
       return;
     }
+    if (!this.phone) {
+      alert('Phone is required.');
+      return;
+    }
+
+    this.phone = this.phone.replace(/\D/g, '');
+    this.phone = this.phone.substring(0, 3) + '-' + this.phone.substring(3,6) + '-' + this.phone.substring(6,10)
+
     var person = {
       'name': this.name,
       'phone': this.phone,
