@@ -116,6 +116,10 @@ li:not(.locked):hover {
   width: 100%;
 }
 
+td .phone {
+  color: #717171;
+}
+
 li:not(.locked):hover .smallIcon.reduced {
   opacity: .5;
 }

@@ -15,7 +15,10 @@
               <span title="Click to deselect for work" *ngIf="person.selected == true"><img class="smallIcon pointer" src="./assets/checkbox.png" (click)="toggleWorking(person)"/></span>
               <span title="Click to select for work" *ngIf="person.selected == false"><img class="smallIcon pointer" src="./assets/checkbox-empty.png" (click)="toggleWorking(person)" /></span>
             </td>
-            <td width="40%"><span>{{ person.name }}</span></td>
+            <td width="40%">
+              <span>{{ person.name }}</span>
+              <br>
+              <span class="phone">{{ person.phone }}</span></td>
             <td width="30%">
               <span *ngIf="person.when == 'BEFORE'">Before Service</span>
               <span *ngIf="person.when == 'AFTER'">After Service</span>

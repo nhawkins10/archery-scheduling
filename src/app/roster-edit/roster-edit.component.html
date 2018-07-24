@@ -4,12 +4,19 @@
     <h2>Sign Up</h2>
 
     <div class="formOverflow">
-
-      <div class="formSection name">
-        <div class="title">Name</div>
-        <input type="text" [(ngModel)]="name" autocomplete="name" />
-      </div>
       <div class="form">
+        <div class="formSection name">
+          <div class="title">Name</div>
+          <input type="text" [(ngModel)]="name" autocomplete="name" pattern="[A-Za-z\s]+" required/>
+          <span class="validity"></span>
+        </div>
+
+        <div class="formSection phone">
+          <div class="title">Phone</div>
+          <input type="tel" [(ngModel)]="phone" autocomplete="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="816-123-4567" required/>
+          <span class="validity"></span>
+        </div>
+
         <div class="formSection time">
           <div class="title">Time</div>
           <input type="radio" name="time" id="time-before" checked [(ngModel)]="when" value="BEFORE" /><label for="time-before">Before Service</label>
