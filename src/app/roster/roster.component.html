@@ -18,7 +18,7 @@
             <td width="40%">
               <span>{{ person.name }}</span>
               <br>
-              <span class="phone">{{ person.phone }}</span></td>
+              <a href="tel:{{ person.phone }}" class="phone">{{ person.phone }}</a></td>
             <td width="30%">
               <span *ngIf="person.when == 'BEFORE'">Before Service</span>
               <span *ngIf="person.when == 'AFTER'">After Service</span>

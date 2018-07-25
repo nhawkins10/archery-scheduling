@@ -118,6 +118,7 @@ li:not(.locked):hover {
 
 td .phone {
   color: #717171;
+  text-decoration: none;
 }
 
 li:not(.locked):hover .smallIcon.reduced {
